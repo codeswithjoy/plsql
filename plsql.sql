@@ -1,7 +1,11 @@
 DECLARE
-   v_total NUMBER;
+    v_count NUMBER;
 BEGIN
-   SELECT COUNT(*) INTO v_total FROM employees WHERE department_id = 10;
-   DBMS_OUTPUT.PUT_LINE('Total employees in dept 10: ' || v_total);
+    UPDATE employees
+    SET salary = salary * 1.10;
+
+    v_count := SQL%ROWCOUNT;
+
+    DBMS_OUTPUT.PUT_LINE(v_count || ' employees got a 10% salary hike.');
 END;
 /
